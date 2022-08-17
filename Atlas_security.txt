@@ -12,18 +12,23 @@ ensure data isnt modified without authorization
 no interruption even in the face of an attempted network intrusion
 
 2--- AAA Authentication Authorization Accounting
-
-1---Authentication -->is the process of a user proving their identity
+two diffrent approach to authentication user crdential and runs 
+its own credintial valdition is the process of a user proving their identity
+and the other  external -->mongodb integrate with a trusted system often called identity provider
+in this case we can see that Atlas is checking an LDAP server to attest the user identity 
+user prove their identity to deter party provider which  then attests that identity to mongodb
+this allows you to enforce more complex authentication policies or leverage exisitig authentication system
+---Authentication -->
 password
 Token
 FingerPrint
 SCRAM SHA-256 hashing algoritm
 for external authnitecation mechanizm  used two authenticatiom   LDAP or x509 certifiacate
-2----Authorozation -->controls who can perform actions
+----Authorozation -->controls who can perform actions
 check permision and perfom
 how an identity after being validated can perform actionas that are being granted to them 
 RBAC privilage that define 
 in mongodb  you can both define your particular set of role by creating a new user define role
 or use any of pre-exsiting role
-3----Accounting  -->is logging the activity of users
+----Accounting  -->is logging the activity of users
 allows the database to keep track of user acions
