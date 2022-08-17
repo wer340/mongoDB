@@ -1,0 +1,17 @@
+
+
+
+1---Authentication -->is the process of a user proving their identity
+password
+Token
+FingerPrint
+SCRAM SHA-256 hashing algoritm
+for external authnitecation mechanizm  used two authenticatiom   LDAP or x509 certifiacate
+2----Authorozation -->controls who can perform actions
+check permision and perfom
+how an identity after being validated can perform actionas that are being granted to them 
+RBAC privilage that define 
+in mongodb  you can both define your particular set of role by creating a new user define role
+or use any of pre-exsiting role
+3----Accounting  -->is logging the activity of users
+allows the database to keep track of user acions
