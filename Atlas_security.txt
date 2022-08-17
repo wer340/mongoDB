@@ -1,5 +1,17 @@
+1---C.I.A  traid *confidentiality *integrity *availability
 
+===confidentiality
+Akin to privacy it mean information is accessed only when authorized 
+✅RBAC role based access control
+the ablity to indentify specific user
 
+===integrity
+ensure data isnt modified without authorization 
+
+=== availability
+no interruption even in the face of an attempted network intrusion
+
+2--- AAA Authentication Authorization Accounting
 
 1---Authentication -->is the process of a user proving their identity
 password
