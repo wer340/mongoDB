@@ -1,0 +1,40 @@
+2---
+nosql  that doesnt use legacy approach of related tables of data 
+this mean that you aare storing your data in organized way but not in row and columns
+3---
+document 
+ a way to organize  and storedata as a set of field-value pair
+collection 
+an organized store of document in mongodb usually with common fields between documents
+an data base  contain mutiple collaction
+
+4--atlas?
+atlas db  our fully manage db  built for a wide range of application with mongodb at is core
+how atlas help you  visualize analyze export and build application your data
+it has many services and tools availble within it all of wich use mongodb  db for data storage and retrieval
+cluster --> a group of servers that store your data✔for config  we call a replica set wich  is a set of a few 
+connected mongodb instance that store the same data
+instance: a single machine locally or in the cloud runing a certain software in this case 
+mongodb being run in the cloud
+✅atlas manage the detail of creating cluster for you  which simplified the opretional overhead of runing
+   and maintaining a db deployment 
+take M103 basic mongodb administration 
+
+5--- creation a mongodb atlas
+The following 10 easy steps will guide you in creating:
+an Atlas Organization named MDBU
+a Project within MDBU called M001
+a Free Tier Atlas cluster named Sandbox
+❌Allowing access from anywhere is *not a good security practice.
+ Production clusters should not have this enabled and should limit network access.
+
+6---
+there are two way for navigate  top  and left side 
+if you havent make user allow connect  you can with connect button make this 
+7---
+launch ide
+Select "Connect" in the Atlas Cluster, and choose to "Connect with the mongo shell".
+ Select "I have the mongo shell installed", then Copy the connection string.
+pass:m001-mongodb-basics
+This terminal is a Unix machine, which means that when you type the password in nothing will display
+This is normal. Everything that you are typing is still being recognized by the terminal.
