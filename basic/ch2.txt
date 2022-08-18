@@ -1,0 +1,39 @@
+1---json
+key:value  paired    key in mongodb known with field
+in some editor code dont error when not qoute on key   
+✅pros of json
+ friendly
+readable
+familiar
+cons--> text-based  space-consuming limited data-type
+mongodb storage json data term of   bson  binary json in memory
+bridges the gap between binary reresenttation and json format
+optimize for :  speed space flexibility
+high performance
+general-purpose focus
+mongodb store data in bson format both ✔internally and ✔over the network 
+but ✅doesnt think of mongodb as a json db 
+anything you can represent in json can be natively stored in mongodb
+https://bsonspec.org/
+https://www.mongodb.com/json-and-bson
+2---interact with atlas cluster
+uri string
+uniform resorce identifier
+in mongodb case we are using an srv satring  to connect to your atlas cluster which 
+is a more specific connection string format that is used to establish a secure connection 
+beetween your aplication and a mongodb instance ✅the string has been updated from the last time you saw
+user name pass part of string rhen @sign direct to our uniqe atlas cluster
+json▶mongoimport
+json▶mongoexport
+bson▶mongorestore
+bson▶mongodump
+mongodump --uri "mongodb+srv://<your username>:<your password>@<your cluster>.mongodb.net/sample_supplies"
+
+mongoexport --uri="mongodb+srv://<your username>:<your password>@<your cluster>.mongodb.net/sample_supplies" --collection=sales --out=sales.json
+
+mongorestore --uri "mongodb+srv://<your username>:<your password>@<your cluster>.mongodb.net/sample_supplies"  --drop dump
+
+mongoimport --uri="mongodb+srv://<your username>:<your password>@<your cluster>.mongodb.net/sample_supplies" --drop sales.json
+https://www.mongodb.com/docs/database-tools/mongoimport/#compatibility
+https://www.mongodb.com/docs/manual/reference/connection-string/#connections-dns-seedlist
+3----
