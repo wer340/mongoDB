@@ -1,0 +1,8 @@
+1---insert data
+go to GUI collection    insert button
+notice : every document must have a unique _id value from the rest of the document 
+objectId()-->dafult avalue for the _id field unless otherwise specified
+doesnt haave to type objectid it is just  what is created by deafult to ensure uniqe value 
+for each document
+https://www.mongodb.com/docs/manual/reference/method/ObjectId/#objectid
+2---
