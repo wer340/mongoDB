@@ -6,3 +6,61 @@ doesnt haave to type objectid it is just  what is created by deafult to ensure u
 for each document
 https://www.mongodb.com/docs/manual/reference/method/ObjectId/#objectid
 2---
+db.inspections.findOne()  one result retuen otherwise even though many result matched with this filter
+awe cant  insert documents with identical _id 
+✔mongodb allows to have same doc  but different _id
+mongodb also  allow  dont have same doc if you choose to mange your database
+to place restriction on the doc content that isa being inserted you can check out mongodb schema
+mongoimport --uri="mongodb+srv://<username>:<password>@<cluster>.mongodb.net/sample_supplies" sales.json
+mongo "mongodb+srv://<username>:<password>@<cluster>.mongodb.net/admin"
+use sample_training
+db.inspections.findOne();
+with insert can ass multiple document   if suronded aquare bracket []  insert([{},{},{}])
+if insert  two doc  with same id   mongo give id to first doc 
+3----
+insert([{{_id:1,name:"test1"},{_id:1,name:"test2"}])  ❌test2 not store
+in many doc insert  mongo behavir by order store
+if want not all   doc insert without duplicate error[skip]   can be add  ✅insert( [{}{},{"ordered":false}])
+✔when the default orderd insert happense the moment there is a duplicate key error the insert opreation halt
+and even if the rest of ✅the document have unique IDs they wont get a chanse to be insert 
+if the insert ✅is unorderd then every document that has a unique underscore id value get
+added to the collection 
+mongodb want simple for same reson  if collection not maded  first make one then store data into  it
+if ▶use newname    is made db with name will become part of my atlas cluster  but if i dont do anything
+and go back to take look at all of db with ▶show dbs then this new name db should not be there
+since there is no data assocoated with it  ✅
+db.inspections.insert([{ "_id": 1, "test": 1 },{ "_id": 1, "test": 2 },
+                       { "_id": 3, "test": 3 }],{ "ordered": false }) ✅order asecond arg
+▶show collections
+▶show dbs
+
+4---update Gui
+pencill button    first  filter doc then edit  {"classa_id":339,"student_id":151}
+
+5--mongodb query lang    MQL
+upateOne updateMany
+One   ---  Many
+updateOne -->  if exist many doc with this filter property   ✔update one of them
+db.zips.updateMany({ "city": "HUDSON" }, { "$inc": { "pop": 10 } })
+first arg the query which will determine which documents will be updated  
+second argument specifies the update that needs to happen 
+we are using $inc [increment]which is an MQL update opreator it increment the value of a specified field  ✅by the given amount
+so in this case we are looking to increment the pop field by 10  in every document which lists "HUDSON"  as city
+✅$inc syntax allows us to update multiple fields at the same time 
+$inc not only update opreator in the mongodb query 
+✔if we try to use the $inc opreator then we will have to find the current population value then substract that from
+thr actual population and then increment by that aamount that sound exhusting insted we will use 
+✅the $set opreator
+db.zips.updateOne({ "zip": "12534" }, { "$set": { "pop": 17630 } })
+if field not exist  $set opreator make this field
+✅push
+✅$pull remove field from array
+adds an elemet to an array field like $set opreator if field not exist   first is made field then add vaalue
+https://www.mongodb.com/docs/manual/reference/operator/update/#id1
+✅$unset  remove field { $unset: { <field1>: "", ... } }
+5----deleting
+best way afor delete _id adress till reach own risk to low
+db.inspections.deleteOne({ "test": 3 })
+✅✅db.collection.drop()   remove collection
+db.inspection.drop()
+✔✔Does removing all collections in a database also remove the database? yes
