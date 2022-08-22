@@ -20,7 +20,7 @@ if insert  two doc  with same id   mongo give id to first doc
 3----
 insert([{{_id:1,name:"test1"},{_id:1,name:"test2"}])  ❌test2 not store
 in many doc insert  mongo behavir by order store
-if want not all   doc insert without duplicate error[skip]   can be add  ✅insert( [{}{},{"ordered":false}])
+if want not all   doc insert without duplicate error[skip]   can be add  ✅insert( [{}{}],{"ordered":false})
 ✔when the default orderd insert happense the moment there is a duplicate key error the insert opreation halt
 and even if the rest of ✅the document have unique IDs they wont get a chanse to be insert 
 if the insert ✅is unorderd then every document that has a unique underscore id value get
@@ -41,7 +41,7 @@ pencill button    first  filter doc then edit  {"classa_id":339,"student_id":151
 upateOne updateMany
 One   ---  Many
 updateOne -->  if exist many doc with this filter property   ✔update one of them
-db.zips.updateMany({ "city": "HUDSON" }, { "$inc": { "pop": 10 } })
+db.zips.updateMany({ "city": "HUDSON" }, { "$inc": { "pop": 10 } })  //example pop was 12000  know is be 12010  plus 10
 first arg the query which will determine which documents will be updated  
 second argument specifies the update that needs to happen 
 we are using $inc [increment]which is an MQL update opreator it increment the value of a specified field  ✅by the given amount

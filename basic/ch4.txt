@@ -1,0 +1,45 @@
+1---query operators: comparison
+mongo "mongodb+srv://<username>:<password>@<cluster>.mongodb.net/admin"
+ what query operators have in common with all kinds of operators is the dollar sign that preceds the operator
+the dollar sign is used for multiple things in mongodb ✔operators ✔aggregaation pipline stage and ✔accessing field
+comparison operators
+$eq = equal to     $ne = Not Equal
+
+$gt > greater than    $lt  < less than
+$gte >=  greater than or equal to  $lte  <= less than or equal to
+{<field>:{<operator>:<value>}}
+sample_training.trips
+https://ride.citibikenyc.com/system-data   data
+2---logic operator
+$and ==> match all of the specified query clauses and default operator can be write as  {❤,❤,❤}
+ $or ==> aat least one of the query claauses is matched▶ {$and|$or|$nor:[{❤},{❤},{❤}]}    
+ $nor ==> fail maatch both given clauses
+ $not==> negates the query requirement{$not:{}}
+$and is used as the deafult operator when an operator is not specified just like we discussed the deafult presence of equal
+when issuing a query similar aalogic works for $and 
+explicit and 
+when combine   and  or  at moment we explicit     {$and:[{$or:[{❤},{❤},{❤}]},{$or:[{❤},{❤},{❤}]}]}
+and combine with comparison operators  means 
+{$and:[{$or:[{❤},{❤},{❤}]},{$or:[{❤},{❤},{❤}]}],"pop":{$lte:100000}}
+
+3-----
+Expressive query operator
+$expr its expressive  meaning it  can do more than one simple operation it allow the use of aggregation expression
+within the query language and it uses this syntax  also allow  us to use variable and conditional statement
+can we compare field within the same document to each other ? yes 
+db.trips.find({ "$expr": { "$eq": [ "$end station id", "$start station id"] }
+              }).count()
+find doc thats start and end pont same 
+✔✔ dollar sign in array for each field  a lot of wondeful [ "$end station id", "$start station id"]
+the dollar sign symbol has a lot of wonderful superpowers in MQL
+one of them is to denote when you are using an operator 
+another one is to signify that you are looking at the value of the field  if dont use $ sign  comapare  specific name field rather than value
+comparison operator applay later  in case with logic operator
+"pop":{$eq:1000}   MQL syntax
+{$eq:["$pop",1000]} Aggregation syntax
+both them same way with slightly different
+we will cover aggregation pipline and operator   explain this different
+✅✅✅✅notice : "expr"  essentially  for  compare  two field of same doc 
+
+
+

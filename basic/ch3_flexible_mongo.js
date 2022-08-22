@@ -69,3 +69,14 @@ db.students.updateOne(
   "diet": "carnivorous",
   "climate": ["polar", "equatorial", "continental", "mountain"]
  }
+
+
+const yt=[
+  {"name":"test2"},
+  {"name":"test3"} ,
+  {"name":"test4"},
+  {"name":"test4"}
+]
+
+
+ 
