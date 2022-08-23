@@ -56,3 +56,27 @@ this query shuld return all docs that haave at least these elements in the ameni
 if dont wante doc that more than value   caan $size operator limit your match
 projection :
 a projection allows us to decide which doc field will be part of the resulting in cursor(type of pointer for save in memory)
+5--- projection
+we see doc  with lots of field that  often dont fit on the screen to mitigate this we can add a projection to our find queries
+and only look at field that we are  intersted in at the moment 
+find({query},{field:1},{field:0})   id by deafult :1    1 fetch   0 dont fetch 
+so this is a valid prjection because the 0 is used to explicitly exclude the default _id value 
+if sub document we want specific data  how  can we access elements in these sub document of an array
+there is  a handy array operator ✅ $elemMatch  find({},{"score":{"$eleMatch":{"score":{"$gt":85}}}) 
+in the score array a field that is called type  and value for the type is extra credit there is no projection
+▶ find({},{"score":{"$eleMatch":{"type":"extra credit"}}) 
+in this query this student really needed extra credit so its good thing that they got it for this class 
+so its a good thing that they got it for this class sice elemMatch is being used in the query part the result
+ is the full doc that matches the condition for at least one of the elements in the array 
+6---querying arrays and sub-documents
+mongodb has a flexible model for storing data which mean  that developer get to decide how to best store their data
+trip collections
+first we want to know how to get  to the array field in those nested docs  for that 
+✅MQL uses something called dot-notation  lets look at it in action 
+✔✔✔in array element nested doc  dot notation with index   ✅fieldname.0.field.2.field:""   
+array elements in most languages and data structure are enumerated starting from zero mongo db is no deffrent
+so the  for check element use $regex operator
+when will search ethrough every array element and document there is field called is past {"is-past":true}
+which can tell us whether this person is still with the company so if they left the value should be true 
+https://www.mongodb.com/docs/manual/tutorial/query-arrays/
+https://www.mongodb.com/docs/manual/reference/operator/query/regex/
