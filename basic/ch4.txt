@@ -41,5 +41,18 @@ both them same way with slightly different
 we will cover aggregation pipline and operator   explain this different
 ✅✅✅✅notice : "expr"  essentially  for  compare  two field of same doc 
 
-
-
+4---Array Operators
+so far we queried documents by fields that have string numric and boolean values
+ its time that we look at more complex elements and see what MQL has to offer to query array fields
+we already learned one array operator $push which allows us to add an element to an array 
+or turn a field into an array field if it was previously a different type
+samaple_airbnb
+when in doc     amenities:[ 1,2,3,,4,5,5]   for ✔find({amenities:1})    ❌find({amenities:[1]}) exact match means look for 
+a amenities field thats exactly one array  [1]
+jsut question does order field matter in query ? yes order does matter 
+find all documents that contain more than one amenity whithout carring about the order od array element 
+MQL has a great operator for that called $all 
+this query shuld return all docs that haave at least these elements in the amenities field 
+if dont wante doc that more than value   caan $size operator limit your match
+projection :
+a projection allows us to decide which doc field will be part of the resulting in cursor(type of pointer for save in memory)
