@@ -1,0 +1,92 @@
+1---Aggregation Framework
+waht do you needed
+how do you use it
+everything we know how to do using the mongoDB query language can also be done using the aggregation framework 
+db.collections.aggregate([])
+then we have start square bracket which makes me think arrays 
+in ararays ✅the order of elements is important and you often access elements by knowing their position 
+the aggregaation framework works as a pipeline  where the order of actions in the pipeline matters
+and each action is excuted in the order in wich we list it 
+meaning that we give our data to the pipeline on one end hen describe how this pipeline is going to treat our data
+using aggregation stages 
+why Aggregation ? why does mongodb have the aggregation framework? what is  it good for?
+aggregation framework allows us  to do incredible things with data 
+allow us to do incredible things with data foe example you can build an equivalent of whatever this is but with data
+$group stage is one of the many stages that differentiates the aaggregation framework from MQL
+with MQL we can filter and update data with aggregation framework we can compute and reshape data 
+$group 
+an operator that takes the incoming stream of data aand siphons it into into multiple distinc reservoirs
+at this point it is important to note that the nonfiltering stages in the aggreagation framwork are not modifying the original
+ data when they do the summaries calculations and groupings of data instead they work with the data that they get from
+ the previous stage in the pipeline which is in its own cursor[space memory of resault
+$count  $sum
+can we do more complex and cool calculations ? absoultely 
+devloper have been known to create conways Game of life  build fractals skys the limit 
+https://university.mongodb.com/courses/M121/about
+2---sort and limit
+sometime you are not interestend in all result but are looking for the top 3 or top 10 result 
+find().sort({pop:1}).limit(1).pretty()
+this query gets all documents sorts them by their population count in increasing order  and only return two of first doc
+✅a cursor method is ❌not applied to data that is stored in the database ✅it is instead applied to the result set 
+that lives in the cursor after the cursor is populated with the filter data thats the  result of the find command 
+we can then apply the sort() method  which will sort the data baased on the criteria that we provided
+sort({pop:1}) 1--> increasing a->z     -1-->decreasing   z->a
+if you are looking for some specific number of result that best match your query you can use limit()
+if use limit without sort you will most likely get some results without any guarantee of the order 
+similarly if you use limit() before you sort() you might miss of the data that you meant to sort and include in the result set 
+which is why mongodb assume that when you use sort() and limit  you always  mean to sort first regardless of the order
+in which you type these 
+https://www.mongodb.com/docs/manual/reference/method/cursor.skip/index.html
+
+3---indexes
+how to make these queries as efficient as possible
+there are multiple ways in wich we can improve our queries but the most impaactful way is through adding indexes 
+what is index?a aan alphabetical list of names subjects etc  with references to the places where they occur 
+typically found the end of book
+✅an index and a collection is a special data structure that stores a small portion of the collections data set 
+in an easy-to-traverse form or put simply an index is a data structure that optimize queries 
+you shuld build an index to support your queries 
+db.trips.createIndex({ "birth year": 1 })
+db.trips.find({ "birth year": 1989 })
+this command create an index on the birth year field in increasing order 
+mongodb doesnt  have to look at every document to get needed resault  it will just go directly to where the 1989 doc lives
+and retrieve them 
+db.trips.createIndex({ "start station id": 1, "birth year": 1 })
+this command  you dont need after find   sort({"birth year": 1}) 
+mongo automatically return by  birth year  beacuse  we se index
+this is quite awesome because it massively  improves the speed and overall performance of our queries
+making them even faster and more efficient the programmers among us know how memory and time-consuming storing 
+can be especially large amounts of data so its very important to use the right indexes for all query that you sort
+so its very important to use the right indexes for all queries that you sort 
+now the question is whether we can make both query that we are talking about more efficient indexes
+compound index:
+db.trips.createIndex({ "start station id": 1, "birth year": 1 })
+this index will first order documents by the start staion id value then by the birth day it coexist with the previous index in 
+the same trip collection but this index is mutch better suited for our second query 
+db.trips.find({ "start station id": 476 }).sort({"birth year": 1})
+it help us immediately locate all start station with id 476 and thanks to our index the docs 
+there are already sorted by birth year 
+4---data modeling 
+mongodb doesnt enforce how data is organized by default so how can we decide what structure to use to store our data 
+where should we create subdocuments where should use arrays of value which point should the data get its own collection 
+making these decisions about the shape and structure of your data is ✅called data mdodeling 
+a way to organize field in a document to support application perforamnce and quering capabilities 
+rule:
+data is stored in the way that is used 
+a way to organize fields in a document to support your application performance and querying capabilities
+https://www.mongodb.com/docs/manual/core/data-modeling-introduction/
+upsert 
+we can expaand into more complex ways to update data 
+upsert is hybrid of update and insert and should only be used when needed the syntax for upsert is to list it as the 
+✅third option right after your update directive 
+db.iot.updateOne({  <query to locate >},{<update>},{ "upsert": true })
+so lets talk about what upsert is and when should we used it  ✅by deafult upsert is set to false
+if is true  you expect it to either do  and update or an insert 
+when update that data the filter criteria match  insert when  match with any docs
+When upsert is set to false and the query predicate returns an empty cursor then there will be no updated documents as a result of this operation.
+
+This is correct.
+When upsert is set to true and the query predicate returns an empty cursor, the update operation creates a new document using the directive from the query predicate and the update predicate.
+
+                      
+                 
