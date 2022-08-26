@@ -1,0 +1,26 @@
+1------data explorer feature 
+GUI collections
+aggregation tab
+how many country filted  by  $count satge 
+export code to your lang ✅
+search->https://www.mongodb.com/docs/atlas/atlas-search/tutorial/#fts-tutorial-ref
+2---
+MongoDB Charts:A product that helps you build visualizations of the data stored in your Atlas Cluster.
+
+realm https://www.mongodb.com/docs/realm/
+chart  https://www.mongodb.com/docs/charts/tutorial/order-data/order-data-tutorial-overview/
+organization access --> evaaery project dedicated with a application 
+access on project level by team so that there isnt a need to add and shuffle access around on an indiviual user basis
+each project can have multiple atlas clster within it as long as each cluster has a unique name 
+from this project view i can access some other awesome Atlas features like realm and charts 
+realm offers sevices that let developers build web or mobile application or just integrate mongodb
+ atlas data into an application all without worrying about managing or scaling servers but they can still easily track 
+the database sid of thing from this view once they have launched an application realm just like all other mongodb products
+
+chart --> this tool allows us to create dynamic data visualization and use those visualization wherever we like 
+in fact in this course we learned enough to create our own data visualization  so lets get started by hitting add dashboard 
+and data source  that give a db ssource 
+setting project   -->delete chart
+
+3---great UI toolas   Compass
+download https://www.mongodb.com/try/download/compass
